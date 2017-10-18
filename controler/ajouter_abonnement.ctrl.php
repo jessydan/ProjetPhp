@@ -8,4 +8,6 @@ $dao = new DAO();
 $requete = "INSERT INTO abonnement(utilisateur_login,RSS_id) VALUES('$pseudo','$RSS_id')";
 $dao->db()->exec($requete);
   include('../controler/afficher_flux.ctrl.php');
- ?>
+
+
+?>

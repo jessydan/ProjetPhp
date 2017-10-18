@@ -124,12 +124,10 @@ class DAO {
     $query->execute();
     $num_row = $query->fetchColumn();
     // Si non on retourne NULL;
-
     if ($num_row == 0){
       return NULL;
     } // Si oui on crée une nouvelle avec ce qu'on récupère dans la BDD. Et on la return.
     else {
-
       $titreEscape= SQLite3::escapeString($titre);
       $requete = "SELECT * FROM nouvelle WHERE titre='$titreEscape'";
       $q = $this->db->query($requete);

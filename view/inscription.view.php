@@ -16,7 +16,7 @@
                 <label>Mot de passe</label>
                 <input type="password" name="MDP" value="">
                 <label>Confirmer mot de passe</label>
-                <input type="password" name="MDP" value="">
+                <input type="password" name="MDPVerif" value="">
                 <button>Inscription</button>
             </form>
 

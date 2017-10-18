@@ -1,7 +1,16 @@
-.formMenu{
-  
-}
 
+div > form{
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+div > header{
+  background: #FF3838;
+  padding: 15px 15px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+}
 nav{
   width: 100%;
   background: #FF3838;
@@ -13,6 +22,9 @@ nav > ul{
 nav > ul > li{
   float: left;
   position: relative;
+}
+nav > ul > .boutondroite{
+  float:right;
 }
 nav > ul > li > a{
   padding:20px 30px;
@@ -32,10 +44,9 @@ nav a{
 }
 .submenu{
   display:none;
+  width: 100%;
 }
-.submenu2{
-  display: none;
-}
+
 nav li:hover .submenu{
   display: inline-block;
   position: absolute;
@@ -44,16 +55,9 @@ nav li:hover .submenu{
   padding: 0px;
   z-index: 100000;
   background: #FF3838;
-  opacity: 0.5;
+  opacity: 0.7;
 }
-nav li:hover .submenu2{
-  display: inline-block;
-  position: absolute;
-  top: 100%;
-  left: 0px;
-  padding: 0px;
-  z-index: 100000;
-}
+
 .submenu li{
   border-bottom: 1px solid #CCC;
 }
@@ -102,6 +106,11 @@ form label {
   margin-top: 30px;
   margin-bottom: 5px;
   position: relative;
+  color: #FF3838;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+
 }
 form label span {
   color: #FF3838;
@@ -147,4 +156,77 @@ form button {
 }
 form button:hover {
   background: #ff5252;
+}
+.divMenu{
+  background: white;
+  width: 100%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  font-family: lato;
+  position: relative;
+  color: #333;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+.divMenu > p{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.formMenu{
+  width:49.9%;
+  display: inline-block;
+}
+.formMenu > button{
+  margin-top:0px;
+  margin-bottom: 0px;
+}
+.buttonMenu{
+  width: 80%;
+}
+.headernouvelle{
+  padding: 1px;
+  margin: 0px;
+  border-radius: 10px 10px 0px 0px;
+  font-size:1.5em;
+}
+.headernouvelle > a{
+  display: inline-block;
+}
+.headernouvelle > p{
+  display: inline-block;
+  border-radius: 10px;
+}
+#conteneur {
+padding:10px;
+}
+#conteneur > .element {
+  font-size: 1.3em;
+}
+.divRecherche > form {
+  padding-top : 20px;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+.divRecherche > form > input {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+.divRecherche > form > button {
+  margin-top: 10px;
+  margin-bottom:10px;
+  width: 30%;
+  text-align: center;
+}
+.divRecherche > header {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  padding: 10px;
+}
+.divRecherche{
+  width: 50%;
+  align-items: center;
+  margin: auto;
 }

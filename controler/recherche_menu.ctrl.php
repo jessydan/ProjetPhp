@@ -1,5 +1,6 @@
 <?php
 // Ce fichier doit renvoyer une liste de RSS contenant le mot clé dans leur titre ou description
+session_start();
 $mot = $_POST["motcle"];
 
 require_once('/users/info/etu-s3/chenavje/public_html/ProgWeb/ProjetPhp/model/DAO.class.php');
