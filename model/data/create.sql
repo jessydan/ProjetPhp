@@ -2,9 +2,11 @@ DROP TABLE RSS;
 DROP TABLE nouvelle;
 DROP TABLE utilisateur;
 DROP TABLE abonnement;
+
 CREATE TABLE RSS (
   id integer primary key autoincrement,
   titre varchar(255),
+  description varchar(255),
   url varchar(255),
   date timestamp
 );

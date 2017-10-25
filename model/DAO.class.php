@@ -70,9 +70,13 @@ class DAO {
 
   // Met à jour un flux
   function updateRSS(RSS $rss) {
-    // Met à jour uniquement le titre et la date
+    // Met à jour uniquement le titre et la date et la description
     $titre = $this->db->quote($rss->titre());
-    $q = "UPDATE RSS SET titre=$titre, date='".$rss->date()."' WHERE url='".$rss->url()."'";
+
+    $description = $this->db->quote($rss->description());
+    $q = "UPDATE RSS SET description=$description,titre=$titre, date='".$rss->date()."' WHERE url='".$rss->url()."'";
+
+
     try {
       $r = $this->db->exec($q);
       if ($r == 0) {
@@ -99,18 +103,58 @@ class DAO {
       for ($i=$idMin; $i < $idMin+$nbRSS; $i++) {
         // Pour chaque itération on crée un RSS avec ce que l'on récupère dans la bdd.
         // On récupère l'url du RSS d'id i
-        $requete = "SELECT url FROM RSS WHERE id='$i'";
+        $requete = "SELECT * FROM RSS WHERE id='$i'";
         $q = ($this->db())->query($requete);
-        $urlRss = $q->fetch();
+        $urlRss = $q->fetchAll();
         // On crée le RSS avec l'url récupéré et l'id i
-        $RSS = new RSS($urlRss[0],$i);
+        //$RSS = new RSS($urlRss[0],$i);
         // On update le RSS pour intialiser ses nouvelles
-        $RSS->update();
+        //$RSS->update();
         // On ajoute le RSS dans la liste de RSS
-        $listeRSS[] = $RSS;
+        $listeRSS[] = $urlRss[0];
       }
     }
     return $listeRSS;
+  }
+
+  function listeRSSAbo($login){
+    // Crée la liste qui contiendra toute les RSS
+    $listeRSS = array();
+    // Récupère tous les flux RSS de la base de donnée.
+    // On récupère le nombre de flux RSS a récuperer.
+    $query = $this->db->prepare("SELECT COUNT(RSS_id) FROM abonnement where utilisateur_login='$login'");
+    $query->execute();
+    $nbRSS = $query->fetchColumn();
+
+    if($nbRSS>0){
+      // Récupère l'id du premier flux RSS de la base de donnée (Ce n'est pas 1 y'a des bugs avec l'autoincrément)
+      $requete = ($this->db->query("SELECT RSS_id FROM abonnement where utilisateur_login='$login' LIMIT 1"));
+      $idMin = intval($requete->fetch()[0]);
+      // On parcours tous les RSS
+      for ($i=$idMin; $i < $idMin+$nbRSS; $i++) {
+        // Pour chaque itération on crée un RSS avec ce que l'on récupère dans la bdd.
+        // On récupère l'url du RSS d'id i
+        $requete = "SELECT * FROM RSS WHERE id='$i'";
+        $q = ($this->db())->query($requete);
+        $urlRss = $q->fetch(PDO::FETCH_ASSOC);
+
+        $listeRSS[]=$urlRss;
+      }
+    }
+    return $listeRSS;
+  }
+
+  function listeNouvelleAbo($login){
+    $listeNouvelle = array();
+    foreach ($this->listeRSSAbo($login) as $key => $value) {
+
+      $idFlux = $value["id"];
+      $requete = "SELECT image,id FROM nouvelle WHERE RSS_id='$idFlux'";
+      $q = $this->db()->query($requete);
+      $nouvelle = $q->fetchAll();
+      $listeNouvelle[] = $nouvelle;
+    }
+    return $listeNouvelle[0];
   }
   //////////////////////////////////////////////////////////
   // Methodes CRUD sur Nouvelle

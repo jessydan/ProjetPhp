@@ -7,7 +7,7 @@ require_once('/users/info/etu-s3/chenavje/public_html/ProgWeb/ProjetPhp/model/DA
 $dao = new DAO();
 if ($MDP == $MDPverif){
   $requete = "INSERT INTO utilisateur VALUES('$pseudo','$MDP')";
-  var_dump($requete);
+
   $q = ($dao->db())->exec($requete);
 }
 

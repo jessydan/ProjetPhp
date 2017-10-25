@@ -58,6 +58,7 @@ class RSS {
     // Change la date de modification a la date actuelle
     $this->date = date('l jS \of F Y h:i:s A');
     // Récupère tous les items(Nouvelles) du flux RSS
+    
     foreach ($doc->getElementsByTagName('item') as $node) {
       // Création d'un objet Nouvelle à conserver dans la liste $this->nouvelles
       $nouvelle = new Nouvelle();

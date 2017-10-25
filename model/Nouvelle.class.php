@@ -27,7 +27,7 @@ class Nouvelle {
   function urlImage() {
     return $this->urlImage;
   }
-  
+
   function downloadImage(DOMElement $item, $imageId) {
     // On suppose que $node est un objet sur le noeud 'enclosure' d'un flux RSS
     // On tente d'accéder à l'attribut 'url'

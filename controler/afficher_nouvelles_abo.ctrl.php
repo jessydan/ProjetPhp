@@ -12,8 +12,6 @@ $listeRssAbo = array();
 foreach ($liste as $key => $value) {
   $listeRssAbo[] = $liste[$key][0];
 }
-
-
   $listeNouvelle = array();
 // Pour chaque flux RSS auquel il est abonné on récupère l'id de la première nouvelle et on crée les nouvelles associé au flux
 foreach ($listeRssAbo as $key => $value) {
@@ -24,9 +22,7 @@ foreach ($listeRssAbo as $key => $value) {
   $requete = ($dao->db())->query("SELECT id FROM nouvelle WHERE RSS_id='$value' LIMIT 1");
   $idMin = intval($requete->fetch()[0]);
 
-
   // Crée la liste qui contiendra toute les nouvelles
-
   // On parcours toute les nouvelles
   for ($i=$idMin; $i < $idMin+$nbNouvelle; $i++) {
     // Pour chaque itération on crée une nouvelle avec ce que l'on récupère dans la bdd.

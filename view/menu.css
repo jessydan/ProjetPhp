@@ -45,8 +45,12 @@ nav a{
 .submenu{
   display:none;
   width: 100%;
-}
 
+}
+nav > ul > li > ul{
+  background-color: tomato;
+transition: width 2s, height 4s;
+}
 nav li:hover .submenu{
   display: inline-block;
   position: absolute;
@@ -56,7 +60,9 @@ nav li:hover .submenu{
   z-index: 100000;
   background: #FF3838;
   opacity: 0.7;
+  transition: 50s;
 }
+
 
 .submenu li{
   border-bottom: 1px solid #CCC;
@@ -76,6 +82,7 @@ background: #b2b4b7;
 font: message-box;
 justify-content: center;
 align-items: center;
+
   }
 a {
   color:white;
